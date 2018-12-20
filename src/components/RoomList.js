@@ -15,9 +15,9 @@ class RoomList extends Component {
 
   componentDidMount() {
     this.roomsRef.on('child_added', snapshot => {
-      const room = snapshot.val();
-      room.key = snapshot.key;
-      this.setState({ rooms: this.state.rooms.concat( room ) })
+      const rooms = snapshot.val();
+      rooms.key = snapshot.key;
+      this.setState({ rooms: this.state.rooms.concat( rooms ) })
     });
   }
 
@@ -41,8 +41,8 @@ class RoomList extends Component {
       <nav className="container">
         <h1>Bloc Chat</h1>
         {
-          this.state.rooms.map((room, index) =>
-            <div key={ index }><h3>{ room.name }</h3></div>
+          this.state.rooms.map((rooms, index) =>
+            <div key={ index }><h3>{ rooms.name }</h3></div>
           )
         }
         {/* new room creator below*/}
