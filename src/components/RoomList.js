@@ -7,7 +7,7 @@ class RoomList extends Component {
 
     this.state = {
       rooms: [],
-      newRoomName: ''
+      newRoomTitle: ''
     };
 
     this.roomsRef = this.props.firebase.database().ref('rooms');
@@ -15,9 +15,9 @@ class RoomList extends Component {
 
   componentDidMount() {
     this.roomsRef.on('child_added', snapshot => {
-      const rooms = snapshot.val();
-      rooms.key = snapshot.key;
-      this.setState({ rooms: this.state.rooms.concat( rooms ) })
+      const room = snapshot.val();
+      room.key = snapshot.key;
+      this.setState({ rooms: this.state.rooms.concat( room ) })
     });
   }
 
@@ -27,7 +27,7 @@ class RoomList extends Component {
 
   createRoom(event){
     event.preventDefault();
-    const newRoomTitle = this.state.newRoomName;
+    const newRoomTitle = this.state.newRoomTitle;
     this.roomsRef.push({
       name: newRoomTitle
     });
@@ -41,8 +41,8 @@ class RoomList extends Component {
       <nav className="container">
         <h1>Bloc Chat</h1>
         {
-          this.state.rooms.map((rooms, index) =>
-            <div key={ index }><h3>{ rooms.name }</h3></div>
+          this.state.rooms.map((room, index) =>
+            <div key={ index }><h3>{ room.name }</h3></div>
           )
         }
         {/* new room creator below*/}
@@ -50,8 +50,7 @@ class RoomList extends Component {
           <label>
             Create a new room:
           </label>
-          <input
-            type = "text"
+          <input type = "text"
             value ={ this.state.newRoomTitle }
             onChange = { (event) => this.handleChange(event) }
           />
