@@ -45,7 +45,7 @@ class RoomList extends Component {
           <a
           key= { room.key }
           onClick = {
-            (key) => this.props.setActiveRoom(room.key)
+            (key) => this.props.selectActiveRoom(room.key)
           }
           href="#">
             <h3>{ room.name }</h3>
