@@ -46,7 +46,8 @@ class RoomList extends Component {
           )
         }
         {/* new room creator below*/}
-        <form onSubmit={ (event) => this.createRoom(event)}>
+        <form
+        onSubmit={ (event) => this.createRoom(event)}>
           <label>
             Create a new room:
           </label>

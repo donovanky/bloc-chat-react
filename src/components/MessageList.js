@@ -25,14 +25,10 @@ componentDidMount(){
   });
 }
 
-
 showRoomMessage(message, index){
   if (message.roomId === this.props.activeRoom){
     return (
-      <li key={ index } className = "message">
-        <p>{message.content}</p>
-        <p>From: { message.username } at { message.sentAt }</p>
-      </li>
+      <p key = {index}>{message.content}</p>
     );
   } else {
     return
@@ -41,21 +37,11 @@ showRoomMessage(message, index){
 
 render(){
   return(
-    <div className="message-holder">
-      <div className="messages">
-        <h1>{ this.props.activeRoomName }</h1>
-        {
           this.state.messages.map(message, index) =>
             this.showRoomMessage(message, index)
           )
         }
       </div>
-      <CreateMessage
-        firebase= { this.prop.firebase }
-        activeRoom= { this.prop.activeRoom }
-        user= { this.props.user }
-        />
-        </div>
       );
     }
 }
