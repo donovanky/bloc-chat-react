@@ -35,7 +35,7 @@ import './App.css';
         <div className="App">
           <RoomList
           firebase={ firebase }
-          activeRoom= {this.selectActiveRoom(key) }
+          activeRoom= { this.state.activeRoom }
           selectActiveRoom={ (key) => this.selectActiveRoom(key) }
           />
           <MessageList

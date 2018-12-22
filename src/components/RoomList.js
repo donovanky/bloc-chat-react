@@ -42,13 +42,14 @@ class RoomList extends Component {
         <h1>Bloc Chat</h1>
         {
           this.state.rooms.map((room, index) =>
-          <a
-          key= { room.key }
-          onClick = {
+            <a
+            key= { room.key }
+            onClick = {
             (key) => this.props.selectActiveRoom(room.key)
           }
           href="#">
             <h3>{ room.name }</h3>
+          </a>
           )
         }
         {/* new room creator below*/}
