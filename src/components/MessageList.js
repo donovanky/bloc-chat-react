@@ -13,6 +13,10 @@ class messageList extends Component {
     this.messagesRef = this.props.firebase.database().ref('messages');
   }
 
+handleChange(event) {
+  this.setState({ input: event.target.value });
+}
+
 componentDidMount(){
   this.messagesRef.on('child_added', snapshot=>{
     const message = snapshot.val();
