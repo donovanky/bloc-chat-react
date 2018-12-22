@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../RoomList.css';
+import './MessageList.css';
 
 class RoomList extends Component {
   constructor(props){
@@ -69,6 +70,5 @@ class RoomList extends Component {
     );
   }
 }
-
 
 export default RoomList;

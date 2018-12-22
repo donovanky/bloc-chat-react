@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../RoomList.css';
+import '../MessageList.css';
 
 class messageList extends Component {
   constructor(props){
@@ -33,7 +33,7 @@ render(){
   return(
     <div>
     {
-          this.state.messages.map(message, index) =>
+          this.state.messages.map((message, index) =>
             this.showRoomMessage(message, index)
           )
         }

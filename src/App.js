@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
-import MessageList from './components/RoomList';
+import MessageList from './components/MessageList';
 import './App.css';
 
   // Initialize Firebase
@@ -34,13 +34,13 @@ import './App.css';
       return (
         <div className="App">
           <RoomList
-          firebase={ firebase }
-          activeRoom= { this.state.activeRoom }
-          selectActiveRoom={ (key) => this.selectActiveRoom(key) }
+            firebase={ firebase }
+            activeRoom= { (key) => this.activeRoom(key) }
+            selectActiveRoom={ (key) => this.selectActiveRoom(key) }
           />
           <MessageList
-          firebase={firebase}
-          activeRoom= {this.state.activeRoom}
+            firebase={ firebase }
+            activeRoom= { this.state.activeRoom }
           />
         </div>
       );
