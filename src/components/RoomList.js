@@ -42,16 +42,23 @@ class RoomList extends Component {
         <h1>Bloc Chat</h1>
         {
           this.state.rooms.map((room, index) =>
-            <div key={ index }><h3>{ room.name }</h3></div>
+          <a
+          key= { room.key }
+          onClick = {
+            (key) => this.props.setActiveRoom(room.key)
+          }
+          href="#">
+            <h3>{ room.name }</h3>
           )
         }
         {/* new room creator below*/}
         <form
         onSubmit={ (event) => this.createRoom(event)}>
           <label>
-            Create a new room:
+            Create new room:
           </label>
-          <input type = "text"
+          <input
+            type = "text"
             value ={ this.state.newRoomTitle }
             onChange = { (event) => this.handleChange(event) }
           />
