@@ -24,11 +24,11 @@ class User extends Component {
   displayGuest(user) {
     if(user === null){
       return(
-        <h3>Hi, Guest!</h3>
+        <h3>Welcome, Guest!</h3>
       );
     } else {
       return(
-        <h3>Hi, { user.displayName }!</h3>
+        <h3>Welcome, { user.displayName }!</h3>
       );
     }
   }
