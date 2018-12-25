@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import User from './User';
 import '../RoomList.css';
 
 class RoomList extends Component {
