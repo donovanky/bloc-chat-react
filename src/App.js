@@ -1,9 +1,10 @@
-
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 import './App.css';
+
 
   // Initialize Firebase
   var config = {
@@ -21,13 +22,21 @@ import './App.css';
       super();
 
       this.state = {
-        activeRoom: ''
+        activeRoom: '',
+        activeRoomTitle: '',
+        user: ''
       };
     }
 
-    selectActiveRoom(key){
+    selectActiveRoom(key, title){
       const selectedActiveRoom = key;
+      const newActiveRoomTitle= title;
       this.setState({ activeRoom: selectedActiveRoom});
+    }
+
+    setUser(user) {
+      console.log(`setUser() activated`);
+        this.setState({user: user });
     }
 
     render() {
@@ -35,12 +44,16 @@ import './App.css';
         <div className="App">
           <RoomList
             firebase={ firebase }
-            activeRoom= { (key) => this.activeRoom(key) }
-            selectActiveRoom={ (key) => this.selectActiveRoom(key) }
+            activeRoom= { this.state.activeRoom }
+            selectActiveRoom= { (key, title) => this.selectActiveRoom(key, title) }
+            user= { this.state.user }
+            setUser= { (user) => this.setUser(user) }
           />
           <MessageList
-            firebase={ firebase }
+            firebase= { firebase }
             activeRoom= { this.state.activeRoom }
+            selectedActiveRoom= { this.state.activeRoomTitle }
+            user= { this.state.user }
           />
         </div>
       );
