@@ -28,7 +28,7 @@ class User extends Component {
       );
     } else {
       return(
-        <li><h3>Welcome, { user.displayName  }!</h3></li>
+        <ul><h3>Welcome, { user.displayName  }!</h3></ul>
       );
     }
   }
