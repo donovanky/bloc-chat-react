@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import User from './User';
 import '../RoomList.css';
-
 
 class RoomList extends Component {
   constructor(props){
@@ -41,6 +41,12 @@ class RoomList extends Component {
     return(
       <nav className="container">
         <h1>Bloc Chat</h1>
+        <User
+        firebase= {this.props.firebase }
+        user= { this.props.user }
+        username= { this.props.username }
+        setUser= { (user) => this.props.setUser(user) }
+          />
         {
           this.state.rooms.map((room, index) =>
             <a

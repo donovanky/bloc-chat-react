@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Message from './Message';
 
 
 class MessageList extends Component {
@@ -22,21 +23,30 @@ componentDidMount(){
 showRoomMessage(message, index){
   if (message.roomId === this.props.activeRoom){
     return (
-      <p key = {index}>{message.content}</p>
+      <li key={ index } className="message">
+      <p>{message.content}</p>
+      <p>From: {message.username} at {message.sentAt}</p>
+      </li>
     );
-  } else {
-    return
-  }
+  } 
 }
 
 render(){
   return(
-    <div>
+    <div className = "message-container">
+      <div className = "messages">
+      <h1> {this.props.activeRoomTitle }</h1>
     {
           this.state.messages.map((message, index) =>
             this.showRoomMessage(message, index)
           )
         }
+      </div>
+      <Message
+        firebase= { this.props.firebase}
+        activeRoom= { this.props.activeRoom }
+        user= { this.props.user }
+        />
       </div>
       );
     }
